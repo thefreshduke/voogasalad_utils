@@ -9,37 +9,38 @@ import org.junit.Test;
 
 
 /**
- * @author Duke Kim
- * Simple A* logic test using 2d arrays. 
+ * Simple test using 2d arrays. 
+ * @author Duke
+ *
  */
 public class AStarTest {
     
 //Uncomment to test. 
-//  @Test
-//  public void testAStarLogic () {
-//      int xMax = 50;
-//      int yMax = 39;
-//      TestNode[][] nodeMap = new TestNode[xMax][yMax];
-//      for (int i = 0; i < xMax; i++) {
-//          for (int j = 0; j < yMax; j++) {
-//              TestNode node = new TestNode(i, j);
-//              nodeMap[i][j] = node;
-//          }
-//      }
-//      TestAStarFinder finder = new TestAStarFinder(nodeMap);
-//      Random rand = new Random();
-//      for (int i = 0; i < 50; i++) {
-//          int startX = rand.nextInt(xMax);
-//          int startY = rand.nextInt(yMax);
-//          int endX = rand.nextInt(xMax);
-//          int endY = rand.nextInt(yMax);
-//          TestNode start = new TestNode(startX, startY);
-//          TestNode destination = new TestNode(endX, endY);
-//          List<TestNode> result = finder.findPath(start, destination);
-//          assertEquals(new Double(Math.abs((endX - startX)) + Math.abs((endY - startY)) + 1),
-//                       new Double(result.size()));
-//      }
-//  }
+  @Test
+  public void testAStarLogic () {
+      int xMax = 50;
+      int yMax = 39;
+      TestNode[][] nodeMap = new TestNode[xMax][yMax];
+      for (int i = 0; i < xMax; i++) {
+          for (int j = 0; j < yMax; j++) {
+              TestNode node = new TestNode(i, j);
+              nodeMap[i][j] = node;
+          }
+      }
+      TestAStarFinder finder = new TestAStarFinder(nodeMap);
+      Random rand = new Random();
+      for (int i = 0; i < 50; i++) {
+          int startX = rand.nextInt(xMax);
+          int startY = rand.nextInt(yMax);
+          int endX = rand.nextInt(xMax);
+          int endY = rand.nextInt(yMax);
+          TestNode start = new TestNode(startX, startY);
+          TestNode destination = new TestNode(endX, endY);
+          List<TestNode> result = finder.findPath(start, destination);
+          assertEquals(new Double(Math.abs((endX - startX)) + Math.abs((endY - startY)) + 1),
+                       new Double(result.size()));
+      }
+  }
     
     private class TestNode {
 

@@ -108,7 +108,6 @@ public abstract class AStarPathFinder<T> implements IPathFinder<T> {
 
         PQTuple startTuple = new PQTuple(start, getHeuristicValue(start, destination));
         frontierQueue.add(startTuple);
-
         ArrayList<T> beginningRoute = new ArrayList<>();
         nodeToCurrentPathMap.put(start, beginningRoute);
 
@@ -125,11 +124,10 @@ public abstract class AStarPathFinder<T> implements IPathFinder<T> {
             visitedNodes.add(currentNode);
             Number valueSoFar = nodeToValueMap.get(currentNode);
             ArrayList<T> pathSoFar = nodeToCurrentPathMap.get(currentNode);
-            Collection<T> nextNodes = getNeighbors(currentNode);
+            Iterable<T> nextNodes = getNeighbors(currentNode);
             for (T neighboringNextNode : nextNodes) {
                 if (!visitedNodes.contains(neighboringNextNode)) {
-                    Number traversalCost = null;
-                    traversalCost = getAndCheckCost(currentNode, neighboringNextNode);
+                    Number traversalCost = getAndCheckCost(currentNode, neighboringNextNode);
                     Number gScore = addNumbers(valueSoFar, traversalCost);
                     Number currentRecordedValue = nodeToValueMap.get(neighboringNextNode);
                     if (currentRecordedValue == null ||
@@ -138,10 +136,8 @@ public abstract class AStarPathFinder<T> implements IPathFinder<T> {
                         ArrayList<T> pathSoFarCopy = new ArrayList<>(pathSoFar);
                         pathSoFarCopy.add(currentNode);
                         nodeToCurrentPathMap.put(neighboringNextNode, pathSoFarCopy);
-
                         Number hScore = getAndCheckHeuristicValue(neighboringNextNode, destination);
-                        Number totalScore = addNumbers(gScore, hScore.doubleValue());
-
+                        Number totalScore = addNumbers(gScore, hScore);
                         PQTuple tuple = new PQTuple(neighboringNextNode, totalScore);
                         frontierQueue.add(tuple);
                     }

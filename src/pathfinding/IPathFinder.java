@@ -5,7 +5,7 @@ import java.util.List;
 
 
 /**
- * @author Duke Kim
+ * @author Duke
  *         Interface for finding a path from a certain node to a destination node. Can take in
  *         any data object as the generic.
  * @param <T> Any object type.
@@ -27,7 +27,7 @@ public interface IPathFinder<T>{
      * @param node Node in question
      * @return A collection of neighboring nodes
      */
-    public Collection<T> getNeighbors (T node);
+    public Iterable<T> getNeighbors (T node);
 
     /**
      * Indicates whether a node is the destination node. In most cases, this method should use the
