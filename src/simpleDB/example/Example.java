@@ -7,7 +7,18 @@ import simpleDB.SimpleDatabase;
 import simpleDB.SimpleDatabase.CompletionCallback;
 import simpleDB.SimpleDatabase.RetrievalCallback;
 
+/**
+ * 
+ * @author Davis
+ *
+ */
+
 public class Example {
+    
+    /**
+     * More compilable examples coming soon...
+     * See README for examples and documentation of everything
+     */
     
     private static SimpleDatabase myDatabase;
     
