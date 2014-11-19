@@ -156,6 +156,6 @@ See Storing and Retrieving for what to do with this user session.
 
 Dependencies
 -------
-This wrapper uses Parse4J, the unofficial Parse REST API library.  It is statically included in the repo.  Thought about using Maven, but didn't want people to have to mess with that for a single dependency.  https://github.com/goose2460/parse4j
+This wrapper uses Parse4J, the unofficial Parse REST API library.  It is statically included in the repo.  Thought about using Maven, but didn't want people to have to mess with that for a single dependency.  https://github.com/thiagolocatelli/parse4j
  
  
