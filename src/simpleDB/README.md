@@ -55,7 +55,7 @@ To save a SimpleDBObject, use
 saveObject (SimpleDBObject obj);
 ```
 
-You will see that these methods optionally take in an identifier string.  This string can be used as a unique identifier or as a way to group data when retrieving from the DB.
+You will see that these methods optionally take in an identifier string.  This string can be used as a unique identifier or as a way to group data when retrieving from the DB.  This can be null.
 
 Optionally, you can register or login as a user which allows for authenticated saving and retrieving of objects.  Read below for more on users.  The below methods require an authenticated session and can only be retrieved by the same user:
 

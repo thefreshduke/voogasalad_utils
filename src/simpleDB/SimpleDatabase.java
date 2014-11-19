@@ -399,7 +399,9 @@ public class SimpleDatabase {
                 ParseFile parseFile = new ParseFile(obj.getFileName(), obj.getData());
                 parseFile.save();
                 dataStore.put("rawData", parseFile);
-                dataStore.put("identifier", obj.getCustomId());
+                if (obj.getCustomId() != null){
+                    dataStore.put("identifier", obj.getCustomId());
+                }
                 if (authenticated) {
                     // cast the userId into a data-less _User object to make parse happy
                     dataStore
