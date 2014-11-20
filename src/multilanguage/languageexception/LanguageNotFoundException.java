@@ -1,4 +1,4 @@
-package LanguageException;
+package multilanguage.languageexception;
 
 /**
  * Exception thrown when a language to be set to cannot be found

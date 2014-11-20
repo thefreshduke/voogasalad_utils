@@ -11,8 +11,8 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import LanguageException.LanguageNotFoundException;
-import LanguageException.LanguagePropertyNotFoundException;
+import multilanguage.languageexception.LanguageNotFoundException;
+import multilanguage.languageexception.LanguagePropertyNotFoundException;
 
 
 /**

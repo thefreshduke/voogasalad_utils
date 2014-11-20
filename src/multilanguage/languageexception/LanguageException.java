@@ -1,4 +1,4 @@
-package LanguageException;
+package multilanguage.languageexception;
 
 /**
  * Exception class for the MultiLanguageUtility

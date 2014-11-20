@@ -1,4 +1,4 @@
-package LanguageException;
+package multilanguage.languageexception;
 
 /**
  * Exception to throw when a language property cannot be found
