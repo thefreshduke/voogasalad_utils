@@ -1,5 +1,11 @@
 package LanguageException;
 
+/**
+ * Exception class for the MultiLanguageUtility
+ * 
+ * @author Jonathan Tseng
+ *
+ */
 public abstract class LanguageException extends Exception {
 
     /**

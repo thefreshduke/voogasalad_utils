@@ -68,7 +68,7 @@ public class ExampleMain extends Application {
             borderPane.setCenter(fruits);
 
             // Creates the scene and shows it
-            Scene scene = new Scene(borderPane, 600, 200);
+            Scene scene = new Scene(borderPane, 600, 300);
             primaryStage.setScene(scene);
             primaryStage.show();
         }

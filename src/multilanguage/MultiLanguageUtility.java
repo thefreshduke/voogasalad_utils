@@ -25,14 +25,16 @@ import LanguageException.LanguagePropertyNotFoundException;
  * e.g.,
  * myButton.getTextProperty().bind(MultiLanguageUtility.newInstance().getString("BUTTON_LABEL"));
  * 
- * public API: 
+ * public API:
  * getInstance() --> instance of the utility
  * initLanguages(String ... resourceFiles) --> initializes the languages in the utility
  * setLanguage(String language) --> sets the language of the utility
  * getCurrentLanguage() --> returns the current language
  * getSupportedLanguages() --> ObjectProperty holding ObservableList for supported languages
- * getStringProperty(String propertyName) --> gets the string property (ObjectProperty holding String)
- * getStringListProperty(String propertyName) --> gets the string list property (ObjectProperty holding ObservableList)
+ * getStringProperty(String propertyName) --> gets the string property (ObjectProperty holding
+ * String)
+ * getStringListProperty(String propertyName) --> gets the string list property (ObjectProperty
+ * holding ObservableList)
  * Requires a resource (.properties) file for each language.
  * The name of the language must be specified in the resource file as a tag "language=..."
  * If it is not, then the name of the language is assumed to be the name of the file.
@@ -101,7 +103,7 @@ public class MultiLanguageUtility {
             System.out.println(map.toString());
         });
     }
-    
+
     /**
      * sets the current language of the program if the language property file exists
      * 
@@ -121,10 +123,10 @@ public class MultiLanguageUtility {
     /**
      * returns the current language
      */
-    public String getCurrentLanguage() {
+    public String getCurrentLanguage () {
         return myCurrentLanguage;
     }
-    
+
     /**
      * returns an object property containing an observable list of the languages currently parsed
      * and supported by this utility
@@ -171,7 +173,8 @@ public class MultiLanguageUtility {
      * @throws LanguagePropertyNotFoundException
      */
     private <T> ObjectProperty<T> getProperty (Map<String, ObjectProperty<T>> map,
-                                               String propertyKey) throws LanguagePropertyNotFoundException {
+                                               String propertyKey)
+                                                                  throws LanguagePropertyNotFoundException {
         if (map.containsKey(propertyKey)) {
             return map.get(propertyKey);
         }
@@ -179,7 +182,7 @@ public class MultiLanguageUtility {
             throw new LanguagePropertyNotFoundException(propertyKey, myCurrentLanguage);
         }
     }
-    
+
     /**
      * private helper method that takes list of files and reads them
      * also sets a random default language
@@ -273,10 +276,6 @@ public class MultiLanguageUtility {
 
     /**
      * updates the string list properties that GUI components are bound to
-     * 
-     * note: for loops required for best user experience:
-     * e.g., If have dropdown with observable list, and user has one item selected, then
-     * this allows to have same item selected when language changes
      */
     private void updateStringListProperties () {
         myLanguagesToStringListsMap.get(myCurrentLanguage)
@@ -284,17 +283,8 @@ public class MultiLanguageUtility {
                     if (myStringListProperties.containsKey(key)) {
                         ObservableList<String> strings =
                                 myStringListProperties.get(key).getValue();
-                        for (int i = 0; i < value.size(); i++) {
-                            if (i < strings.size()) {
-                                strings.set(i, value.get(i));
-                            }
-                            else {
-                                strings.add(value.get(i));
-                            }
-                        }
-                        for (int i = value.size(); i < strings.size(); i++) {
-                            strings.remove(i);
-                        }
+                        strings.clear();
+                        strings.addAll(value);
                     }
                 });
     }
