@@ -22,22 +22,20 @@ import com.google.gson.JsonSerializer;
  * with first parameter being the Class object of the superclass, and second 
  * parameter being this GenericTypeAdapter.
  * 
- * Requires Gson library
- * 
  * @author Eli Lichtenberg
  *
  * @param <T> Class for which the TypeAdapter is being created.
  */
 public class GenericTypeAdapter<T> implements JsonSerializer<T>, JsonDeserializer<T>{
 	
-	private String myPackageName;
+	private String[] myPackageNames;
 	
 	/**
 	 * Constructor for GenericTypeAdapter.
-	 * @param packageName Name of package holding the subclass.
+	 * @param packageNames Name of packages holding the subclasses.
 	 */
-	public GenericTypeAdapter(String packageName) {
-		myPackageName = packageName;
+	public GenericTypeAdapter(String... packageNames) {
+		myPackageNames = packageNames;
 	}
 	
 	/**
@@ -61,12 +59,21 @@ public class GenericTypeAdapter<T> implements JsonSerializer<T>, JsonDeserialize
 		JsonObject jsonObject = json.getAsJsonObject();
 		String type = jsonObject.get("type").getAsString();
 		JsonElement element = jsonObject.get("properties");
-		
-		try {
-			return context.deserialize(element, Class.forName(myPackageName + "." + type));
-		} catch (ClassNotFoundException cnfe) {
-			throw new JsonParseException("Unknown element type: " + type, cnfe);
+		T t = null;
+		for(int i = 0; i < myPackageNames.length; i++) {
+			try {
+				t = context.deserialize(element, Class.forName(myPackageNames[i] + "." + type));
+				break;
+			} catch (ClassNotFoundException cnfe) {
+				if(i == myPackageNames.length - 1) {
+					throw new JsonParseException("Unknown element type: " + type, cnfe);
+				}
+				else {
+					continue;
+				}
+			}
 		}
+		return t;
 	}
-	
+
 }
