@@ -91,4 +91,8 @@ public class KeyboardMapping {
 		KeyCode kc = this.myMappedKeys.getKeyCode(button);
 		myButtonFunctionsMap.put(kc, keyFunction);
 	}
+	
+	public Map<KeyCode, String> getButtonFunctionsMap() {
+		return myButtonFunctionsMap;
+	}
 }
