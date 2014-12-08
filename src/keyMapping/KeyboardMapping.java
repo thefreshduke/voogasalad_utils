@@ -33,6 +33,10 @@ public class KeyboardMapping {
 	private MappedKeys myMappedKeys;
 	private KeyMapForm myKeyMapForm;
 
+	/**
+	 * 
+	 * @param keyFunctions
+	 */
 	public KeyboardMapping(Map<KeyCode, String> keyFunctions) {
 		myMappedKeys = new MappedKeys();
 		myButtonFunctionsMap = new HashMap<KeyCode, String>();
@@ -40,6 +44,9 @@ public class KeyboardMapping {
 		myKeyMapForm = new KeyMapForm(comboBoxForButton(functionList), this);
 	}
 
+	/**
+	 * 
+	 */
 	public void createKeyboardView() {
 		myStage = new Stage();
 		myStage.setTitle("Vooga Salad Bits Please Keyboard Mapping Utility");
@@ -50,6 +57,9 @@ public class KeyboardMapping {
 		buildKeyboard();
 	}
 
+	/**
+	 * 
+	 */
 	public void buildKeyboard() {
 		int num = 0;
 		for(int i = 0; i < NUM_KEYS_IN_COLUMN; i++)
@@ -62,6 +72,13 @@ public class KeyboardMapping {
 		myStage.show();
 	}
 
+	/**
+	 * 
+	 * @param num
+	 * @param i
+	 * @param j
+	 * @return
+	 */
 	private int buildButton(int num, int i, int j) {
 		StackPane sp = new StackPane();
 		String key = this.myMappedKeys.getKey(num);
@@ -78,6 +95,11 @@ public class KeyboardMapping {
 		return num;
 	}
 
+	/**
+	 * 
+	 * @param functionList
+	 * @return
+	 */
 	private ComboBox<String> comboBoxForButton(List<String> functionList) {
 		ComboBox<String> functionCombos = new ComboBox<String>();
 		for(String function : functionList) {
@@ -86,13 +108,15 @@ public class KeyboardMapping {
 		return functionCombos;
 	}
 
+	/**
+	 * 
+	 * @param button
+	 * @param keyFunction
+	 */
 	public void setNewKey(String button, String keyFunction)
 	{
 		KeyCode kc = this.myMappedKeys.getKeyCode(button);
 		myButtonFunctionsMap.put(kc, keyFunction);
 	}
 	
-	public Map<KeyCode, String> getButtonFunctionsMap() {
-		return myButtonFunctionsMap;
-	}
 }
