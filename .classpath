@@ -10,9 +10,9 @@
 	<classpathentry kind="lib" path="src/simpleDB_dependencies/json-20131018.jar"/>
 	<classpathentry kind="lib" path="src/simpleDB_dependencies/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="src/simpleDB_dependencies/parse4j-1.4-SNAPSHOT.jar" sourcepath="src/simpleDB_dependencies/parse4j-1.4-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="/voogasalad_LosTorres/lib/gson-2.3.jar" sourcepath="/voogasalad_LosTorres/lib/gson-2.3-sources.jar">
+	<classpathentry kind="lib" path="lib/gson-2.3.jar" sourcepath="lib/gson-2.3-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/voogasalad/lib/gson-2.3-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:platform:/resource/voogasalad_util/lib/gson-2.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
