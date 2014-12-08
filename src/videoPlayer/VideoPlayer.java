@@ -22,7 +22,7 @@ import javafx.util.Duration;
 /**
  * @author $cotty $haw
  * 
- * The VideoPlayer is a MediaPlayer that plays video files. The user
+ * The VideoPlayer is a MediaPlayer that plays video files. All users
  * can use it with VideoViewer.java to play any video files placed in
  * this package.
  * 
