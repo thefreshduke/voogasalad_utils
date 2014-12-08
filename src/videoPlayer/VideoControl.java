@@ -22,12 +22,12 @@ import javafx.util.Duration;
 /**
  * @author $cotty $haw
  * 
- * The VideoPlayer is a MediaPlayer that plays video files. It can be
- * used with VideoPlayerTest.java to play video files that are placed
- * in this package.
+ * The VideoControl is a MediaPlayer that plays video files. The user
+ * can use it with VideoPlayer.java to play any video files placed in
+ * this package.
  * 
  */
-class VideoController extends BorderPane {
+class VideoControl extends BorderPane {
 
     private static final int PADDING = 20;
     private static final int SLIDER_WIDTH = 50;
@@ -65,7 +65,7 @@ class VideoController extends BorderPane {
     private boolean myCycleIsComplete;
     private HBox myMediaBar;
 
-    public VideoController (final MediaPlayer player) {
+    public VideoControl (final MediaPlayer player) {
         createMediaPlayer(player);
         defineMediaBarBehavior();
 
