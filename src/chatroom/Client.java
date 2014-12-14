@@ -26,12 +26,12 @@ import java.net.Socket;
 public class Client extends Panel implements Runnable {
 
     // String constants
-    private static final String MY_TEXT_FIELD_MESSAGE = "My text field";
-    private static final String MY_TEXT_AREA_MESSAGE = "My text area";
-    private static final String CONNECTED_TO_MY_SOCKET_MESSAGE = "connected to ";
+    private static final String MY_TEXT_FIELD_MESSAGE = "Type...";
+    private static final String MY_TEXT_AREA_MESSAGE = "Chat...";
     private static final String EMPTY_STRING = "";
     private static final String NEWLINE = "\n";
-    private static final String IO_EXCEPTION_MESSAGE = "IOException in Client.java";
+    private static final String ERROR_CONNECTING_MESSAGE = "Error connecting";
+    private static final String ERROR_DISPLAYING_MESSAGE = "Error displaying chat message";
 
     /**
      * Generated serial version ID
@@ -65,7 +65,6 @@ public class Client extends Panel implements Runnable {
         // Connects to the server
         try {
             mySocket = new Socket(host, port);
-            System.out.println(CONNECTED_TO_MY_SOCKET_MESSAGE + mySocket);
 
             myDataIn = new DataInputStream(mySocket.getInputStream());
             myDataOut = new DataOutputStream(mySocket.getOutputStream());
@@ -74,7 +73,7 @@ public class Client extends Panel implements Runnable {
             new Thread(this).start();
         }
         catch (IOException ex) {
-            System.out.println(IO_EXCEPTION_MESSAGE);
+            System.out.println(ERROR_CONNECTING_MESSAGE);
         }
     }
 
@@ -98,7 +97,7 @@ public class Client extends Panel implements Runnable {
             }
         }
         catch (IOException ex) {
-            System.out.println(IO_EXCEPTION_MESSAGE);
+            System.out.println(ERROR_DISPLAYING_MESSAGE);
         }
     }
 }

@@ -23,10 +23,7 @@ import java.util.Hashtable;
 public class Server {
 
     // String constants
-    private static final String LISTENING_ON_MY_SOCKET_MESSAGE = "Listening on ";
-    private static final String CONNECTION_FROM_PORT_MESSAGE = "Connection from ";
-    private static final String REMOVING_CONNECTION_TO_SERVER_MESSAGE = "Removing connection to ";
-    private static final String ERROR_WRITING_OUTPUT_MESSAGE = "Error writing to the output stream";
+    private static final String ERROR_WRITING_OUTPUT_MESSAGE = "Error sending the message";
     private static final String ERROR_CLOSING_FILE_MESSAGE = "Error closing ";
 
     // ServerSocket for accepting new connections
@@ -42,12 +39,10 @@ public class Server {
     // Listens to ports to accept connections
     private void listen (int port) throws IOException {
         mySocket = new ServerSocket(port);
-        System.out.println(LISTENING_ON_MY_SOCKET_MESSAGE + mySocket);
 
         // Infinite loop for accepting connections
         while (true) {
             Socket s = mySocket.accept();
-            System.out.println(CONNECTION_FROM_PORT_MESSAGE + s);
 
             // DataOutputStream for writing data to the others
             DataOutputStream dataOut = new DataOutputStream(s.getOutputStream());
@@ -88,7 +83,6 @@ public class Server {
 
         // Synchronization to prevent errors if another thread calls sendToAll()
         synchronized (myOutputStreams) {
-            System.out.println(REMOVING_CONNECTION_TO_SERVER_MESSAGE + s);
             myOutputStreams.remove(s);
 
             try {
