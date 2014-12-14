@@ -31,6 +31,7 @@ public class Client extends Panel implements Runnable {
     private static final String EMPTY_STRING = "";
     private static final String NEWLINE = "\n";
     private static final String ERROR_CONNECTING_MESSAGE = "Error connecting";
+    private static final String ERROR_SENDING_TO_SERVER = "Error communicating with server";
     private static final String ERROR_DISPLAYING_MESSAGE = "Error displaying chat message";
 
     /**
@@ -84,7 +85,7 @@ public class Client extends Panel implements Runnable {
             myTextField.setText(EMPTY_STRING);
         }
         catch (IOException ex) {
-            System.out.println(ex);
+            System.out.println(ERROR_SENDING_TO_SERVER);
         }
     }
 
