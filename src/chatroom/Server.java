@@ -24,7 +24,7 @@ public class Server {
 
     // String constants
     private static final String ERROR_WRITING_OUTPUT_MESSAGE = "Error sending the message";
-    private static final String ERROR_CLOSING_FILE_MESSAGE = "Error closing ";
+    private static final String ERROR_CLOSING_FILE_MESSAGE = "Error closing socket";
 
     // ServerSocket for accepting new connections
     private ServerSocket mySocket;
@@ -89,7 +89,7 @@ public class Server {
                 s.close();
             }
             catch (IOException ex) {
-                System.out.println(ERROR_CLOSING_FILE_MESSAGE + s);
+                System.out.println(ERROR_CLOSING_FILE_MESSAGE);
             }
         }
     }
